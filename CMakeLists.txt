@@ -7,6 +7,9 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 # Define a C++ project.
 project(RtMidi LANGUAGES CXX)
 
+# Default to shared lib.
+set(BUILD_SHARED_LIBS ON)
+
 # Create library target.
 add_library(rtmidi RtMidi.h
                    RtMidi.cpp)
