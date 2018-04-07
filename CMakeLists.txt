@@ -7,6 +7,8 @@ cmake_minimum_required(VERSION 3.4 FATAL_ERROR)
 # Define a C++ project.
 project(RtMidi LANGUAGES CXX)
 
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 # Default to shared lib.
 set(BUILD_SHARED_LIBS ON)
 
@@ -29,7 +31,6 @@ if(UNIX)
     target_compile_definitions(rtmidi PRIVATE __LINUX_ALSA__)
     target_link_libraries(rtmidi PRIVATE asound pthread)
 elseif(WIN32)
-    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
     set(CMAKE_DEBUG_POSTFIX "d")
     target_compile_definitions(rtmidi PRIVATE __WINDOWS_MM__)
     target_link_libraries(rtmidi PRIVATE winmm.lib)
