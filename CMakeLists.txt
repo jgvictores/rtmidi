@@ -26,11 +26,11 @@ target_include_directories(rtmidi PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURC
 
 # Tweak platform-specific configuration.
 if(UNIX)
-    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-    set(CMAKE_DEBUG_POSTFIX "d")
     target_compile_definitions(rtmidi PRIVATE __LINUX_ALSA__)
     target_link_libraries(rtmidi PRIVATE asound pthread)
 elseif(WIN32)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    set(CMAKE_DEBUG_POSTFIX "d")
     target_compile_definitions(rtmidi PRIVATE __WINDOWS_MM__)
     target_link_libraries(rtmidi PRIVATE winmm.lib)
 elseif(APPLE)
